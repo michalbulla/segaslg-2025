@@ -1,10 +1,18 @@
-<footer>
-  <div class="mt-8 bg-gray-300">
-    <div class="xl:container">
-      <div class="p-2 md:p-4">
-        <p class="text-sm text-center">&copy;{{ 'now'|date('Y') }} {{ siteName }}. All Rights Reserved.</p>
-        {% include '_partials/signature' %}
+<footer class="bg-gradient-to-b from-[#174369] to-[#245F91] py-12 text-white">
+  <div class="lg:container px-4">
+    <div class="sm:grid sm:grid-cols-2">
+      <div class="adresa col-span-1 border-b sm:border-0 border-white/20 mb-8">
+        <p class="mb-6 text-lg font-bold">SEGAS LG, s.r.o.<br/>Bystrá 286, 977 01 Brezno</p>
+        <p class="phone mb-6 text-lg leading-relaxed"><a href="tel:0905 621 072">0905 621 072</a> - Gálfy<br/><a href="tel:0915 837 717">0915 837 717</a> - Sklad<br/><a href="tel:0905 633 443">0905 633 443</a> - Sklad<br/><a href="tel:0907 070 020">0907 070 020</a> - Obchodný zástupca, šofér</p>
+        <p class="email"><a href="mailto:segas@slovanet.sk">segas@slovanet.sk</a></p><br/>
+      </div>
+      <div class="col-span-1 sm:text-right">
+        <h2 class="text-xl font-bold mb-4">Pobočka Stará Ľubovňa</h2>
+        <p class="mb-6"><span class="text-lg font-bold">Ing. Jozef Straka</span><br />Farbiarska 1393/59<br/>064 01 Stará Ľubovňa</p>
+        <p class="phone mb-6 text-lg leading-relaxed"><a href="tel:0911 636 360">0911 636 360</a><br/><a href="tel:0905 296 532">0905 296 532</a></p>
+        <p class="email"><a href="mailto:jstraka@slnet.sk">jstraka@slnet.sk</a></p>
       </div>
     </div>
+    <p class="note sm:text-center pt-8">&copy; {{ now|date('Y') }} SEGAS LG, s.r.o. Všetky práva vyhradené.</p>
   </div>
 </footer>

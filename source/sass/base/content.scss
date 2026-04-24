@@ -4,6 +4,44 @@
   RICH TEXT EDITOR STYLES     *************************************************
 -----------------------------------------------------------------------------*/
 
+.hero p {
+  @apply text-white text-xl sm:text-2xl mb-4 leading-relaxed;
+}
+
+.hp-content {
+  p, ul {
+     @apply mb-4 text-lg;
+  }
+}
+
+.hp-content-white {
+  p, ul, ol {
+     @apply text-white;
+  }
+
+  ul {
+    @apply list-disc ml-8 md:ml-16 mb-0;
+  }
+
+  ul li {
+    @apply mb-4 text-xl md:text-2xl;
+  }
+
+  ol {
+    @apply list-decimal ml-16 mb-0;
+  }
+}
+
+.kroky-text {
+  p {
+    @apply text-white/60 text-base mb-4 leading-relaxed;
+  }
+
+  a {
+    @apply text-white/80 underline hover:no-underline;
+  }
+}
+
 .redactor {
   p {
     @apply mb-3 leading-6;

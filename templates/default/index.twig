@@ -3,13 +3,116 @@
 {% extends "_layouts/base" %}
 {% set uri = entry.uri %}
 
+{% set hero = {
+    mode: 'crop',
+    width: 2000,
+    height: 500,
+    quality: 100
+} %}
+
 {% block pageLayout %}
   {% embed '_layouts/page/homePage' %}
     {% block contentLayout %}
       <div class="main-content" id="main-content-start">
-        <div class="container">
-          {# {% include '_partials/carousel' %} #}
-          <h1>{{ entry.title }}</h1>
+        
+        {# Hero #}
+        {% if entry.image|length %}
+          <div class="h-screen bg-cover bg-center" style="background-image: url({{ entry.image.one().getUrl() }});" class="hero">
+            <div class="bg-black/50 flex items-center hero w-full h-full">
+              <div class="lg:container px-4 ">
+                <h1 class="main-heading text-brand-blue-light mb-8 leading-[1.2]" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"><span class="text-white">Zabezpečíme všetko, </span>čo vaša<br> prevádzka potrebuje.</h1>
+                <div class="mb-8">
+                  {{entry.richText }}
+                </div>
+                {% if entry.buttons|length %}
+                  <div class="buttons">
+                    {% for button in entry.buttons %}
+                      <a href="{{ button.buttonLink }}" class="btn mr-4">{{ svg(button.imageIcon.one)|attr({class: 'h-5 w-6 inline-block mr-2'}) }} {{ button.buttonLink.label }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>        
+        {% endif %}
+
+        {# Pre koho #}
+        <div class="bg-brand-blue-light/5">
+          <div class="lg:container px-4 hp-content py-12 md:py-16">
+            <p class="border-l-4 border-brand-blue-light uppercase text-brand-blue-light font-semibold pl-4 !leading-snug mb-6 !text-base">pre koho</p>
+            <h2 class="text-gray-800 font-bold text-4xl md:text-5xl mb-12 sm:mb-20">{{ entry.nadpis }}</h2>
+            <div class="sm:grid sm:grid-cols-2 gap-12">
+              {% for blok in entry.bloky %}
+                <div class="col-span-1 mb-8 sm:mb-0">
+                  <h3 class="text-3xl font-bold mb-4 !text-brand-blue"> <span class="mr-4">&#{{ blok.kodIkonky|raw}};</span> {{ blok.title }}</h3>
+                  {{ blok.plainText4Rows}}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        {# Co zabezpecime #}
+        <div class="bg-brand-blue-dark">
+          <div class="lg:container px-4 hp-content py-16">
+            <p class="border-l-4 border-brand-blue-light uppercase text-brand-blue-light font-semibold pl-4 !leading-snug mb-6 !text-base">čo zabezpečíme</p>
+            <h2 class="text-white font-bold text-4xl md:text-5xl mb-4">{{ entry.nadpis2 }}</h2>
+            <p class="!text-xl text-white/90 !mb-12">{{ entry.plainText}}</p>
+            <div class="grid sm:grid-cols-2 gap-8">
+              <div>
+                <img src="/img/sortiment.jpg" alt="">
+              </div>
+              <div class="hp-content-white list flex items-center">
+                {{ entry.richText2 }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {# PREČO SEGAS #}
+        <div class="bg-brand-blue-light/5">
+          <div class="lg:container px-4 hp-content py-16">
+            <p class="border-l-4 border-brand-blue-light uppercase text-brand-blue-light font-semibold pl-4 !leading-snug mb-6 !text-base">PREČO SEGAS</p>
+            <h2 class="text-gray-800 font-bold text-4xl md:text-5xl mb-16">{{ entry.nadpis3 }}</h2>
+            <div class="hp-content-white md:grid grid-cols-3 gap-8">
+              {% for blok in entry.vyhody %}
+                <div class="col-span-1 mb-6 md:mb-0 kroky-text bg-brand-blue/5 border border-brand-blue/30 hover:shadow-md hover:border-brand-blue/50 duration-300 px-4 py-8 rounded-lg flex items-center justify-center">
+                  <div>
+                    <h4 class="font-black text-center text-5xl mb-4 text-brand-blue-light"><span class="mr-4">&#{{ blok.kodIkonky|raw}};</span></h4>
+                    <h3 class="text-brand-blue text-center uppercase text-xl font-bold mb-2">{{ blok.title }}</h3>
+                    {{ blok.richText}}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        {# AKO TO FUNGUJE #}
+        <div class="bg-brand-blue-dark">
+          <div class="lg:container px-4 hp-content py-16">
+            <p class="border-l-4 border-brand-blue-light uppercase text-brand-blue-light font-semibold pl-4 !leading-snug mb-6 !text-base">AKO TO FUNGUJE</p>
+            <h2 class="text-white font-bold text-4xl md:text-5xl mb-4">{{ entry.nadpis4 }}</h2>
+            <p class="!text-xl text-white/90 !mb-12">{{ entry.plainText2 }}</p>
+            <div class="hp-content-white md:grid grid-cols-3 gap-8">
+              {% for krok in entry.kroky %}
+                <div class="col-span-1 mb-6 md:mb-0 kroky-text bg-white/5 hover:shadow-md hover:border-white/70 hover:bg-white/10 duration-300 border border-white/30 px-4 py-4 rounded-lg">
+                  <h4 class="font-black text-2xl mb-4 text-brand-blue-light">0{{ loop.index }}</h4>
+                  <h3 class="text-white text-xl font-bold mb-2">{{ krok.title }}</h3>
+                  {{ krok.richText}}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        {# O NAS #}
+        <div class="bg-brand-blue-light/5">
+          <div class="lg:container px-4 hp-content py-16">
+            <p class="border-l-4 border-brand-blue-light uppercase text-brand-blue-light font-semibold pl-4 !leading-snug mb-6 !text-base">O nás</p>
+            <h2 class="text-gray-800 font-bold text-4xl md:text-5xl mb-8 md:mb-16">{{ entry.nadpis5 }}</h2>
+            {{ entry.richText3 }}
+          </div>
         </div>
       </div>
     {% endblock %}
