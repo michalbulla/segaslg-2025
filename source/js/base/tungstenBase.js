@@ -6,20 +6,20 @@ var documentReady = (callback) => {
 
 // ----- Mobile Navigation toggle functionality
 
-const mainNavToggleButton = document.getElementById('main-nav-toggle');
-const mainNav = document.getElementById('main-nav');
+// const mainNavToggleButton = document.getElementById('main-nav-toggle');
+// const mainNav = document.getElementById('main-nav');
 
-mainNavToggleButton.addEventListener('click', (e) => {
-  if (mainNavToggleButton.getAttribute('aria-expanded') == 'true') {
-    mainNavToggleButton.setAttribute('aria-expanded', 'false')
-  }
-  else {
-    mainNavToggleButton.setAttribute('aria-expanded', 'true')
-  }
+// mainNavToggleButton.addEventListener('click', (e) => {
+//   if (mainNavToggleButton.getAttribute('aria-expanded') == 'true') {
+//     mainNavToggleButton.setAttribute('aria-expanded', 'false')
+//   }
+//   else {
+//     mainNavToggleButton.setAttribute('aria-expanded', 'true')
+//   }
 
-  mainNavToggleButton.classList.toggle('open');
-  mainNav.classList.toggle('open');
-});
+//   mainNavToggleButton.classList.toggle('open');
+//   mainNav.classList.toggle('open');
+// });
 
 // ----- Mobile Sub Navigation toggle functionality
 
@@ -98,7 +98,7 @@ documentReady(() => {
     "use strict";
 
     // List of Video Vendors embeds you want to support
-    var players = ['iframe[src*="youtube.com"]', 'iframe[src*="vimeo.com"]'];
+    var players = ['iframe[src*="youtube.com"]', 'iframe[src*="google.com"]', 'iframe[src*="vimeo.com"]'];
 
     // Select videos
     var fitVids = document.querySelectorAll(players.join(","));
